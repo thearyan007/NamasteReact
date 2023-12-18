@@ -7,7 +7,13 @@
   </head>
   <body>
     <div id="root">
-      <h1>Hello World from HTML!</h1>
+      <!-- <h1>Hello World from HTML!</h1>                    Basic HTML  -->
     </div>
+    <script>
+      var heading = document.createElement("h1");
+      heading.innerHTML = "Hello World By JavaScript!";
+      const root = document.getElementById("root");
+      root.appendChild(heading);
+    </script>
   </body>
 </html>
