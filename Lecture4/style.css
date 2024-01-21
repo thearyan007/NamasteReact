@@ -1,0 +1,63 @@
+body {
+  margin: 1px;
+}
+.Header {
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  border: 1px solid grey;
+}
+
+.Header .logo-container img {
+  height: 100px;
+  width: 100px;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  justify-content: center;
+  list-style: none;
+}
+li {
+  margin: 10px;
+  text-decoration: none;
+}
+
+.search {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.restaurant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 220px;
+  max-height: 300px;
+  background-color: #f0f0f0;
+  padding: 5px;
+}
+
+.restaurant:hover {
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.restaurant img,
+.restaurant h3,
+.restaurant h4 {
+  margin: 0;
+}
+.restaurant img {
+  margin-top: 5px;
+  height: 200px;
+  width: 200px;
+}
+.restaurants-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
