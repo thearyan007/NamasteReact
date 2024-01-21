@@ -648,19 +648,21 @@ const Header = () => (
 
 const Restaurants = (props) => {
   const { restData } = props;
+  const { name, cloudinaryImageId, cuisines, avgRating, areaName } =
+    restData?.info; //destructuring
   return (
     <div className="restaurant">
       <img
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          restData.info.cloudinaryImageId
+          cloudinaryImageId
         }
         alt="resto-Image"
       />
-      <h2>{restData.info.name}</h2>
-      <h4>{restData.info.cuisines.join(", ")}</h4>
-      <h4>Rating:{restData.info.avgRating} </h4>
-      <h4>{restData.info.areaName}</h4>
+      <h2>{name}</h2>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>Rating:{avgRating} </h4>
+      <h4>{areaName}</h4>
     </div>
   );
 };
@@ -678,12 +680,9 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurants-container">
-        <Restaurants restData={restroData[0]} />
-        <Restaurants restData={restroData[1]} />
-        <Restaurants restData={restroData[2]} />
-        <Restaurants restData={restroData[3]} />
-        <Restaurants restData={restroData[4]} />
-        <Restaurants restData={restroData[5]} />
+        {restroData.map((restro) => {
+          return <Restaurants key={restro.info.id} restData={restro} />;
+        })}
       </div>
     </div>
   );

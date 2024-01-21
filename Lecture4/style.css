@@ -40,10 +40,11 @@ li {
   background-color: #f0f0f0;
   padding: 5px;
   border-radius: 5%;
+  border: 1px solid #b0c4de;
 }
 
 .restaurant:hover {
-  border: 1px solid;
+  border: 3px solid #87cefa;
   cursor: pointer;
 }
 
