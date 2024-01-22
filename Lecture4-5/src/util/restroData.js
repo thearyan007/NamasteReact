@@ -1,9 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import logo from "../Lecture4/assets/Logo-FoodApp.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-
 const restroData = [
   {
     info: {
@@ -630,75 +624,4 @@ const restroData = [
   },
 ];
 
-const Header = () => (
-  <div className="Header">
-    <div className="logo-container">
-      <img src={logo} alt="food-app Logo" />
-    </div>
-    <div className="nav-items">
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact Us</li>
-        <li>Cart</li>
-      </ul>
-    </div>
-  </div>
-);
-
-const Restaurants = (props) => {
-  const { restData } = props;
-  const { name, cloudinaryImageId, cuisines, avgRating, areaName } =
-    restData?.info; //destructuring
-  return (
-    <div className="restaurant">
-      <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-        alt="resto-Image"
-      />
-      <h2>{name}</h2>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>Rating:{avgRating} </h4>
-      <h4>{areaName}</h4>
-    </div>
-  );
-};
-const Body = () => {
-  return (
-    <div className="body-container">
-      <div className="search">
-        <input
-          className="search-bar"
-          type="text"
-          placeholder="Search..."
-        ></input>
-        <button type="submit">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
-      </div>
-      <div className="restaurants-container">
-        {restroData.map((restro) => {
-          return <Restaurants key={restro.info.id} restData={restro} />;
-        })}
-      </div>
-    </div>
-  );
-};
-
-const Footer = () => {
-  return;
-};
-
-const AppLayout = () => (
-  <div className="AppLayout">
-    <Header />
-    <Body />
-    <Footer />
-  </div>
-);
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default restroData;
