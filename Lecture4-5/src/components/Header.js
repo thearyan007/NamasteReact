@@ -1,4 +1,4 @@
-import logo from "../assets/Logo-FoodApp.png";
+import logo from "../../assets/Logo-FoodApp.png";
 
 const Header = () => (
   <div className="Header">
