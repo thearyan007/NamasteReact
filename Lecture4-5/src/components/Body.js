@@ -6,9 +6,14 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   let [RestroList, setRestroList] = useState([]);
+
   useEffect(() => {
     getData();
   }, []);
+
+  let [filteredRestro, setFilteredRestro] = useState([]);
+
+  const [searchText, setSearchText] = useState("");
 
   const getData = async () => {
     let data = await fetch(
@@ -20,21 +25,35 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log(fetchedRestro);
+    setFilteredRestro(fetchedRestro);
     setRestroList(fetchedRestro);
   };
-  if (RestroList.length === 0) {
-    return <Shimmer />;
-  }
 
-  return (
+  return RestroList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body-container">
       <div className="search">
         <input
           className="search-bar"
           type="text"
           placeholder="Search..."
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
         ></input>
-        <button type="submit">
+        <button
+          type="submit"
+          onClick={() => {
+            const updatedRestro = RestroList.filter((restro) => {
+              return restro.info.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+            });
+            setFilteredRestro(updatedRestro);
+          }}
+        >
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
@@ -45,15 +64,15 @@ const Body = () => {
             const FilteredList = RestroList.filter(
               (restro) => restro.info.avgRating > 4
             );
-            setRestroList(FilteredList);
-            console.log(RestroList);
+            setFilteredRestro(FilteredList);
+            // console.log(RestroList);
           }}
         >
           Top Rated Restaurants
         </button>
       </div>
       <div className="restaurants-container">
-        {RestroList.map((restro) => {
+        {filteredRestro.map((restro) => {
           return <Restaurants key={restro.info.id} restData={restro} />;
         })}
       </div>

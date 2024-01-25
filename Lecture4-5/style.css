@@ -99,3 +99,18 @@ li {
   margin: 10px;
   border-radius: 5%;
 }
+.login-btn {
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 20%;
+}
+
+.contact,
+.about,
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
