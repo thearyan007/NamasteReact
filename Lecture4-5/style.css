@@ -114,3 +114,8 @@ li {
   justify-content: center;
   height: 100vh;
 }
+
+.error h1,
+.error h2 {
+  margin: 0;
+}
