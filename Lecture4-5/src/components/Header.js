@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/Logo-FoodApp.png";
 
 const Header = () => {
@@ -11,16 +12,16 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/contact">Contact Us</a>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <li>
-            <a href="#">Cart</a>
+            <Link to="#">Cart</Link>
           </li>
           <button
             className="login-btn"
