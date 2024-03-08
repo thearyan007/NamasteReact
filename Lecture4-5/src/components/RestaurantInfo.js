@@ -14,13 +14,13 @@ const RestaurantInfo = () => {
   const fetchData = async () => {
     const data = await fetch(MENU_API + restroId);
     const json = await data.json();
-    const rInfo = json?.data?.cards[2]?.card?.card?.info;
+    const rInfo = json?.data?.cards[0]?.card?.card?.info;
     const mnu =
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card?.itemCards;
-    console.log(json);
-    console.log(mnu);
-    console.log(rInfo);
+    console.log("Json", json);
+    console.log("menu", mnu);
+    console.log("rinfo", rInfo);
     setBasicRestroInfo(rInfo);
     setMenu(mnu);
   };
