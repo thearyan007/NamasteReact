@@ -131,6 +131,8 @@ li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 45vw;
+  height: auto;
 }
 .user-card h2,
 .user-card h3,
