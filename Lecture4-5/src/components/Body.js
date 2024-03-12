@@ -4,35 +4,22 @@ import Restaurants from "./Restaurants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../util/useOnlineStatus";
+import useRestroList from "../util/useRestroList";
 
 const Body = () => {
-  let [RestroList, setRestroList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const RestroList = useRestroList();
+  const [filteredRestro, setFilteredRestro] = useState([]);
 
   useEffect(() => {
-    getData();
-  }, []);
+    setFilteredRestro(RestroList);
+  }, [RestroList]);
 
-  let [filteredRestro, setFilteredRestro] = useState([]);
-
-  const [searchText, setSearchText] = useState("");
-
-  const getData = async () => {
-    let data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const json = await data.json();
-    const fetchedRestro =
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    console.log(fetchedRestro);
-    setFilteredRestro(fetchedRestro);
-    setRestroList(fetchedRestro);
-  };
   const onlineStatus = useOnlineStatus();
-  if (onlineStatus === false) {
+  if (!onlineStatus) {
     return <h1>Looks like you are offline!!, Please Check Your connection.</h1>;
   }
+
   return RestroList.length === 0 ? (
     <Shimmer />
   ) : (
@@ -69,7 +56,6 @@ const Body = () => {
               (restro) => restro.info.avgRating > 4
             );
             setFilteredRestro(FilteredList);
-            // console.log(RestroList);
           }}
         >
           Top Rated Restaurants
