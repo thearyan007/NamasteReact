@@ -3,6 +3,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Restaurants from "./Restaurants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../util/useOnlineStatus";
 
 const Body = () => {
   let [RestroList, setRestroList] = useState([]);
@@ -28,7 +29,10 @@ const Body = () => {
     setFilteredRestro(fetchedRestro);
     setRestroList(fetchedRestro);
   };
-
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return <h1>Looks like you are offline!!, Please Check Your connection.</h1>;
+  }
   return RestroList.length === 0 ? (
     <Shimmer />
   ) : (
