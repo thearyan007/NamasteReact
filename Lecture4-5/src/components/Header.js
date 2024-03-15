@@ -7,12 +7,12 @@ const Header = () => {
   const [Login, setLogin] = useState("Log-In");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="Header">
-      <div className="logo-container">
+    <div className="flex justify-between">
+      <div className="logo-container w-20 ">
         <img src={logo} alt="food-app Logo" />
       </div>
       <div className="nav-items">
-        <ul>
+        <ul className="flex p-4 m-4">
           <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
