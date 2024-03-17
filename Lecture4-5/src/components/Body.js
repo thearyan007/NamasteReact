@@ -24,9 +24,9 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body-container">
-      <div className="search">
+      <div className="search m-1 p-1 flex justify-center">
         <input
-          className="search-bar"
+          className="search-bar m-2 px-3 rounded-lg border border-solid border-black"
           type="text"
           placeholder="Search..."
           value={searchText}
@@ -36,6 +36,7 @@ const Body = () => {
         ></input>
         <button
           type="submit"
+          className="mx-2"
           onClick={() => {
             const updatedRestro = RestroList.filter((restro) => {
               return restro.info.name
@@ -48,9 +49,9 @@ const Body = () => {
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
-      <div className="flter">
+      <div className="flter m-1 p-1 flex justify-center">
         <button
-          className="filter-btn"
+          className="filter-btn m-1 px-3 rounded-lg bg-red-400 text-white  border-2 border-black"
           onClick={() => {
             const FilteredList = RestroList.filter(
               (restro) => restro.info.avgRating > 4
@@ -61,7 +62,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="restaurants-container">
+      <div className="restaurants-container flex flex-wrap m-1 p-1 text">
         {filteredRestro.map((restro) => {
           return <Restaurants key={restro.info.id} restData={restro} />;
         })}

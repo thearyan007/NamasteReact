@@ -11,7 +11,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 // import Grocery from "./components/Grocery";
 
 const AppLayout = () => (
-  <div className="AppLayout">
+  <div className="AppLayout bg-[#EAE6DF]">
     <Header />
     <Outlet />
     <Footer />
