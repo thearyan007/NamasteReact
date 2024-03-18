@@ -22,4 +22,21 @@ const Restaurants = (props) => {
   );
 };
 
+// High order Component
+
+export const NewRestro = (props) => {
+  const EnhancedRestaurants = () => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
+          NewRestro
+        </label>
+        <Restaurants {...props} />
+      </div>
+    );
+  };
+
+  return <EnhancedRestaurants />;
+};
+
 export default Restaurants;

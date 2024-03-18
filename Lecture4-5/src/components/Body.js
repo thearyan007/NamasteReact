@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import Restaurants from "./Restaurants";
+import Restaurants, { NewRestro } from "./Restaurants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../util/useOnlineStatus";
@@ -10,6 +10,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const RestroList = useRestroList();
   const [filteredRestro, setFilteredRestro] = useState([]);
+  console.log(RestroList);
 
   useEffect(() => {
     setFilteredRestro(RestroList);
@@ -62,9 +63,13 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="restaurants-container flex flex-wrap m-1 p-1 text">
+      <div className="restaurants-container flex flex-wrap m-5 p-5 text ">
         {filteredRestro.map((restro) => {
-          return <Restaurants key={restro.info.id} restData={restro} />;
+          if ("isNewlyOnboarded" in restro.info) {
+            return <NewRestro key={restro.info.id} restData={restro} />;
+          } else {
+            return <Restaurants key={restro.info.id} restData={restro} />;
+          }
         })}
       </div>
     </div>
