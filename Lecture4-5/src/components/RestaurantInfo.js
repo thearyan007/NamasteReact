@@ -2,6 +2,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useFetchData from "../util/useFetchData";
 import Accordian from "./Accordian.js";
+import RestaurantCategory from "./RestaurantCatagory.js";
 
 const RestaurantInfo = () => {
   const { restroId } = useParams();
@@ -39,8 +40,13 @@ const RestaurantInfo = () => {
       <div className="menu text-3xl my-2">
         <h1 className="m-1 font-semibold">Menu</h1>
         <ol>
-          {catagories.map((cat) => {
+          {/* {catagories.map((cat) => {
             return <Accordian catagory={cat} />;
+          })} */}
+          {catagories.map((cat, index) => {
+            return (
+              <RestaurantCategory catagory={cat?.card?.card} key={index} />
+            );
           })}
         </ol>
       </div>
